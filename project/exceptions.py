@@ -1,3 +1,6 @@
+"""This unit contains exception classes"""
+
+
 class BaseServiceError(Exception):
     code = 500
 
