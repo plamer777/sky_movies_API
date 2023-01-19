@@ -3,6 +3,6 @@ services:
   api_app:
     image: plamer88/coursework_4:$GITHUB_REF_NAME-$GITHUB_RUN_ID
     ports:
-    - 80:5000
+      - 80:5000
     volumes:
       - ./$DATABASE_NAME:/sky_movies/$DATABASE_NAME
