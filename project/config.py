@@ -4,8 +4,11 @@ import base64
 import os
 from pathlib import Path
 from typing import Type
+import dotenv
 # -------------------------------------------------------------------------
 BASE_DIR = Path(__file__).resolve().parent.parent
+dotenv.load_dotenv()
+DB_NAME = os.getenv('DB_NAME')
 # -------------------------------------------------------------------------
 
 
@@ -43,7 +46,7 @@ class DevelopmentConfig(BaseConfig):
     DEBUG = True
     SQLALCHEMY_ECHO = True
     SQLALCHEMY_DATABASE_URI = "sqlite:///" + BASE_DIR.joinpath(
-        'project.db').as_posix()
+        f'{DB_NAME}').as_posix()
 
 
 class ProductionConfig(BaseConfig):

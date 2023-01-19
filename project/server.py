@@ -2,7 +2,6 @@
 and another objects like SQLAlchemy and Api instances"""
 from flask import Flask, jsonify, render_template
 from flask_cors import CORS
-
 from project.exceptions import BaseServiceError
 from project.setup.api import api
 from project.setup.db import db

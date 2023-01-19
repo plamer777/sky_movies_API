@@ -1,0 +1,8 @@
+version: "3.9"
+services:
+  api_app:
+    image: plamer88/course_works:version_1
+    ports:
+    - 80:5000
+    volumes:
+      - ./$DATABASE_NAME:sky_movies/$DATABASE_NAME
