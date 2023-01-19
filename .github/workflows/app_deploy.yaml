@@ -34,7 +34,7 @@ jobs:
       - name: create tables
         run: python3 create_tables.py
       - name: fill up tables
-        run: python3 load_fixtures
+        run: python3 load_fixtures.py
       - name: copy docker-compose.yaml to server
         uses: appleboy/scp-action@master
         with:
