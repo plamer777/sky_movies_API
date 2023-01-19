@@ -5,4 +5,4 @@ services:
     ports:
     - 80:5000
     volumes:
-      - ./$DATABASE_NAME:sky_movies/$DATABASE_NAME
+      - ./$DATABASE_NAME:/sky_movies/$DATABASE_NAME
