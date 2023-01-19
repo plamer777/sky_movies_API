@@ -29,6 +29,8 @@ jobs:
         run: cat docker-compose-ci.yaml | envsubst > docker-compose.yaml
       - name: set up requirements
         run: pip install -r requirements.txt
+      - name: change dotenv file
+        run: cat .env_ci | envsubst > .env
       - name: create tables
         run: python3 create_tables.py
       - name: fill up tables
