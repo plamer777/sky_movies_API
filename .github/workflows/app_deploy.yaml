@@ -26,7 +26,7 @@ jobs:
       - name: prepare docker-compose file
         run: cat docker-compose-ci.yaml | envsubst > docker-compose.yaml
       - name: copy docker-compose.yaml to server
-        uses: appleboy/scp-action@maister
+        uses: appleboy/scp-action@master
         with:
           host: ${{secrets.SERVER_IP}}
           username: ${{secrets.SERVER_LOGIN}}
@@ -34,7 +34,7 @@ jobs:
           source: docker-compose.yaml
           target: sky_movies
       - name: start application
-        uses: appleboy/ssh-action@maister
+        uses: appleboy/ssh-action@master
         with:
           host: ${{secrets.SERVER_IP}}
           username: ${{secrets.SERVER_LOGIN}}
