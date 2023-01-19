@@ -20,6 +20,8 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     needs: build_and_push
+    env:
+      DATABASE_NAME: ${{secrets.DATABASE_NAME}}
     steps:
       - name: clone project
         uses: actions/checkout@v2
