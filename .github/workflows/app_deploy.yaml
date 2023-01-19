@@ -5,13 +5,11 @@ jobs:
     runs-on: ubuntu-latest
     env:
       DATABASE_NAME: ${{secrets.DATABASE_NAME}}
-      FLASK_APP: run.py
-      FLASK_ENV: development
     steps:
       - name: clone project
         uses: actions/checkout@v2
       - name: prepare dotenv file
-        run: cat .env | envsubst > .env
+        run: cat .env_ci | envsubst > .env
       - name: build image
         run: docker build -t plamer88/coursework_4:$GITHUB_REF_NAME-$GITHUB_RUN_ID .
       - name: docker login
