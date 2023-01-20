@@ -12,6 +12,10 @@ jobs:
         run: cat .env_ci | envsubst > .env
       - name: prepare db file
         run: cat Dockerfile_ci | envsubst > Dockerfile
+      - name: install requirements
+        run: pip install requirements.txt
+      - name: use flake8 to check code style
+        run: flake8 .
       - name: build image
         run: docker build -t plamer88/coursework_4:$GITHUB_REF_NAME-$GITHUB_RUN_ID .
       - name: docker login

@@ -5,7 +5,6 @@ from project.server import create_app, db
 # -------------------------------------------------------------------------
 app = create_app(config)
 # -------------------------------------------------------------------------
-# test if data was saved after removing container
 
 
 @app.shell_context_processor

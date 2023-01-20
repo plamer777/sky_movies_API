@@ -11,6 +11,8 @@ from project.dao import UserDao
 from project.models import User
 
 from project.services.base import BaseService
+
+
 # --------------------------------------------------------------------------
 
 
@@ -58,7 +60,6 @@ class AuthService(BaseService[UserDao]):
 
         if not refresh:
             if not self._check_password(d_user.get('password'), user.password):
-
                 abort(400, 'Wrong password')
 
         try:
@@ -115,6 +116,7 @@ class AuthService(BaseService[UserDao]):
 
         :returns: wrapper-function
         """
+
         def wrapper(*args, **kwargs):
             """This function is a wrapper for func
 
@@ -144,7 +146,6 @@ class AuthService(BaseService[UserDao]):
                 # if email received from token is not the same as received
                 # from database then restrict access
                 if found_user.email != decoded_data.get('email'):
-
                     abort(403, 'Access denied')
 
                 if request.method == 'PUT':
@@ -165,7 +166,6 @@ class AuthService(BaseService[UserDao]):
                     # a database
                     if not self._check_password(
                             user_data.get('password_1'), found_user.password):
-
                         abort(400, 'Wrong password')
 
             return func(*args, **kwargs)
@@ -194,7 +194,6 @@ class AuthService(BaseService[UserDao]):
         :returns: the hashed base64-encoded password
         """
         if password:
-
             algo = current_app.config['PWD_ALGO']
             iterations = current_app.config['PWD_HASH_ITERATIONS']
             salt = current_app.config['PWD_HASH_SALT']
@@ -206,7 +205,7 @@ class AuthService(BaseService[UserDao]):
 
         raise Exception('Invalid data')
 
-    def _check_password(self, provided_password: str, valid_password: str) ->\
+    def _check_password(self, provided_password: str, valid_password: str) -> \
             bool:
         """This method serves to validate a password
 
@@ -230,16 +229,19 @@ class AuthService(BaseService[UserDao]):
         algo = current_app.config['JWT_ALGO']
         secret = current_app.config['SECRET_KEY']
 
-        access_expiration = datetime.datetime.utcnow() + \
-        datetime.timedelta(minutes=current_app.config['TOKEN_EXPIRE_MINUTES'])
+        access_expiration = \
+            datetime.datetime.utcnow() + \
+            datetime.timedelta(minutes=current_app.config[
+                               'TOKEN_EXPIRE_MINUTES'])
 
         d_user['exp'] = calendar.timegm(access_expiration.timetuple())
 
         access_token = jwt.encode(d_user, secret, algorithm=algo)
 
-        refresh_expiration = datetime.datetime.utcnow() + \
-                             datetime.timedelta(days=current_app.config[
-                                 'TOKEN_EXPIRE_DAYS'])
+        refresh_expiration = \
+            datetime.datetime.utcnow() + \
+            datetime.timedelta(days=current_app.config[
+                'TOKEN_EXPIRE_DAYS'])
 
         d_user['exp'] = calendar.timegm(refresh_expiration.timetuple())
 

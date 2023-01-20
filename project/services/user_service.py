@@ -26,7 +26,7 @@ class UserService(BaseService[UserDao]):
             print(f'При обновлении данных возникла ошибка {e}')
             abort(400, 'Bad request')
 
-    def update_password(self, d_user: dict)-> None:
+    def update_password(self, d_user: dict) -> None:
         """This method serves to update the user's password
 
         :param d_user: a dictionary containing an old and new password

@@ -48,7 +48,7 @@ class TestMoviesDAO:
         :return: a Movie instance
         """
         movie = Movie(
-            title = 'Best movie_2',
+            title='Best movie_2',
             description='test description1',
             trailer='https://test1',
             year=2008,
@@ -86,7 +86,7 @@ class TestMoviesDAO:
         assert movies_dao.get_all() == [movie_1, movie_2]
 
     def test_get_movies_by_page(self, app, movies_dao, movie_1,
-                                   movie_2):
+                                movie_2):
         """This method tests the get_all method of a MovieDAO
 
         :param app: the fixture representing the Flask instance

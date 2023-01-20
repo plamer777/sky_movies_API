@@ -3,7 +3,6 @@ serialize and deserialize the models"""
 from sqlalchemy import Column, String, Integer, Float, ForeignKey
 from marshmallow import Schema, fields
 from sqlalchemy.orm import relationship
-
 from project.setup.db import models
 # -------------------------------------------------------------------------
 
@@ -74,6 +73,7 @@ class User(models.Base):
     surname = Column(String(20))
     favorite_genre = Column(Integer(), ForeignKey('genres.id'))
     best_genre = relationship('Genre')
+
 
 class UserSchema(Schema):
     """The UserSchema class serves to serialize and deserialize user

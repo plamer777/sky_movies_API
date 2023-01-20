@@ -23,7 +23,7 @@ movie: Model = api.model('Фильм', {
                                                         'отправляются...'),
     'trailer': fields.String(required=True, example='https://youtube.com'),
     'year': fields.Integer(required=True, example=1984),
-    'rating': fields.Float(required=True, example= 10.0),
+    'rating': fields.Float(required=True, example=10.0),
     'genre_id': fields.Integer(required=True, example=3),
     'director_id': fields.Integer(required=True, example=5)
 })

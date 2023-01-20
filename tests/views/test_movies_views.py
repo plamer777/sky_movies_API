@@ -1,5 +1,4 @@
-"""This unit contains the TestMoviesView to test CBVs for /movies/ 
-route"""
+"""This unit contains the TestMoviesView to test CBVs for /movies/ route"""
 import pytest
 from project.models import Movie
 # ------------------------------------------------------------------------

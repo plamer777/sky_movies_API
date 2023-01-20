@@ -78,6 +78,3 @@ class FavoritesService(BaseService[FavoritesDAO]):
             genre_counter[favorite.movie.genre_id] += 1
 
         return max(genre_counter, key=lambda x: genre_counter[x])
-
-
-

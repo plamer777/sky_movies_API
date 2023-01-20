@@ -1,5 +1,5 @@
-"""This unit contains the TestDirectorsView to test CBVs for /directors/ 
-route"""
+"""This unit contains the TestDirectorsView to test CBVs for /directors/
+ route"""
 import pytest
 from project.models import Director
 # ------------------------------------------------------------------------
