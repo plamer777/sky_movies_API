@@ -45,5 +45,7 @@ flask run
 ## Запуск тестов
 ```shell
 pytest .
+
+
 ```
 
